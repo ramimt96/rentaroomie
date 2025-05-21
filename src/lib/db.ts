@@ -1,13 +1,17 @@
-import mongoose, { Connection } from 'mongoose';
+import mongoose from 'mongoose';
 
-// Add mongoose global type
-declare global {
-  var mongoose: {
+// Declare mongoose on the global type
+interface GlobalWithMongoose extends NodeJS.Global {
+  mongoose: {
     conn: mongoose.Connection | null;
     promise: Promise<mongoose.Connection> | null;
-  };
+  } | undefined;
 }
 
+// Declare global mongoose
+declare const global: GlobalWithMongoose;
+
+// Only use environment variables, never hardcode credentials
 const MONGODB_URI = process.env.MONGODB_URI as string;
 
 if (!MONGODB_URI) {
