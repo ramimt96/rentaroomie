@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function About() {
   return (
@@ -21,7 +22,13 @@ export default function About() {
           <div className="bg-white shadow-xl rounded-lg overflow-hidden">
             <div className="md:flex">
               <div className="md:shrink-0">
-                <img className="h-48 w-full object-cover md:h-full md:w-64" src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="People enjoying coffee in a shared apartment" />
+                <Image 
+                  className="h-48 w-full object-cover md:h-full md:w-64" 
+                  src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" 
+                  alt="People enjoying coffee in a shared apartment" 
+                  width={1050}
+                  height={700}
+                />
               </div>
               <div className="p-8">
                 <div className="uppercase tracking-wide text-sm text-purple-600 font-semibold">Our Story</div>
@@ -30,7 +37,7 @@ export default function About() {
                   RentRoomie was founded in 2020 by a group of friends who experienced the challenges of finding compatible roommates and affordable housing firsthand. After numerous bad roommate experiences and frustrating apartment searches, they recognized a gap in the market for a comprehensive platform that addressed both finding the right people to live with and the right place to live.
                 </p>
                 <p className="mt-4 text-gray-600">
-                  We believe that your living situation significantly impacts your happiness and well-being. That's why we've created a platform that goes beyond basic roommate matching to consider lifestyle preferences, habits, and personalities when creating connections.
+                  We believe that your living situation significantly impacts your happiness and well-being. That&apos;s why we&apos;ve created a platform that goes beyond basic roommate matching to consider lifestyle preferences, habits, and personalities when creating connections.
                 </p>
               </div>
             </div>
@@ -40,14 +47,20 @@ export default function About() {
             <div className="w-full md:w-1/2">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h2>
               <p className="text-gray-600 mb-4">
-                We envision a world where finding a compatible roommate and a great place to live is no longer a source of stress and anxiety. We're working towards making the process as enjoyable as finding a new friend or partner.
+                We envision a world where finding a compatible roommate and a great place to live is no longer a source of stress and anxiety. We&apos;re working towards making the process as enjoyable as finding a new friend or partner.
               </p>
               <p className="text-gray-600">
-                By combining advanced matching algorithms with a user-friendly interface, we're helping people across the country find their perfect living situations and form lasting connections with their roommates.
+                By combining advanced matching algorithms with a user-friendly interface, we&apos;re helping people across the country find their perfect living situations and form lasting connections with their roommates.
               </p>
             </div>
             <div className="w-full md:w-1/2">
-              <img className="rounded-lg shadow-lg" src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Modern apartment living room" />
+              <Image 
+                className="rounded-lg shadow-lg" 
+                src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" 
+                alt="Modern apartment living room" 
+                width={1050}
+                height={700}
+              />
             </div>
           </div>
           
@@ -96,22 +109,46 @@ export default function About() {
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Meet the Team</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="text-center">
-                <img className="mx-auto h-32 w-32 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Team member" />
+                <Image 
+                  className="mx-auto h-32 w-32 rounded-full" 
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                  alt="Team member" 
+                  width={400}
+                  height={400}
+                />
                 <h3 className="mt-4 text-lg font-medium text-gray-900">Sarah Johnson</h3>
                 <p className="text-purple-600">CEO & Co-Founder</p>
               </div>
               <div className="text-center">
-                <img className="mx-auto h-32 w-32 rounded-full" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Team member" />
+                <Image 
+                  className="mx-auto h-32 w-32 rounded-full" 
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                  alt="Team member" 
+                  width={400}
+                  height={400}
+                />
                 <h3 className="mt-4 text-lg font-medium text-gray-900">Michael Chen</h3>
                 <p className="text-purple-600">CTO & Co-Founder</p>
               </div>
               <div className="text-center">
-                <img className="mx-auto h-32 w-32 rounded-full" src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Team member" />
+                <Image 
+                  className="mx-auto h-32 w-32 rounded-full" 
+                  src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                  alt="Team member" 
+                  width={400}
+                  height={400}
+                />
                 <h3 className="mt-4 text-lg font-medium text-gray-900">Jessica Patel</h3>
                 <p className="text-purple-600">Head of Product</p>
               </div>
               <div className="text-center">
-                <img className="mx-auto h-32 w-32 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Team member" />
+                <Image 
+                  className="mx-auto h-32 w-32 rounded-full" 
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
+                  alt="Team member" 
+                  width={400}
+                  height={400}
+                />
                 <h3 className="mt-4 text-lg font-medium text-gray-900">David Washington</h3>
                 <p className="text-purple-600">Head of Operations</p>
               </div>
