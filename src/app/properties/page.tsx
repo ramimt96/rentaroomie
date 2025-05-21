@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
+import Image from 'next/image'
 
 type Property = {
   id: number
@@ -47,7 +48,7 @@ const properties: Property[] = [
     price: 4500,
     bedrooms: 2,
     bathrooms: 2,
-    description: 'Stunning apartment in a full-service luxury building with breathtaking city views. Floor-to-ceiling windows, chef\'s kitchen, marble bathrooms, and custom closets.',
+    description: 'Stunning apartment in a full-service luxury building with breathtaking city views. Floor-to-ceiling windows, chef&apos;s kitchen, marble bathrooms, and custom closets.',
     amenities: ['Doorman', '24/7 Gym', 'Swimming Pool', 'Roof Terrace', 'Parking Available'],
     imageSrc: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
   },
@@ -152,10 +153,12 @@ export default function Properties() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProperties.map((property) => (
               <div key={property.id} className="bg-white rounded-xl shadow-lg overflow-hidden">
-                <img 
+                <Image 
                   src={property.imageSrc} 
                   alt={property.title} 
                   className="w-full h-48 object-cover"
+                  width={1350}
+                  height={800}
                 />
                 <div className="p-6">
                   <h2 className="text-xl font-bold text-gray-900 truncate">{property.title}</h2>

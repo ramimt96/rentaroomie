@@ -31,7 +31,7 @@ export default function HowItWorks() {
                     <h3 className="mt-8 text-xl font-medium text-gray-900">1. Create Your Profile</h3>
                     <p className="mt-2 text-base text-gray-600">
                       Sign up and build your profile. Tell us about your lifestyle, habits, and preferences as a roommate. 
-                      Add details about your budget, desired locations, and what you're looking for in a living situation.
+                      Add details about your budget, desired locations, and what you&apos;re looking for in a living situation.
                     </p>
                   </div>
                 </div>
@@ -64,7 +64,7 @@ export default function HowItWorks() {
                     </div>
                     <h3 className="mt-8 text-xl font-medium text-gray-900">3. Connect & Meet</h3>
                     <p className="mt-2 text-base text-gray-600">
-                      When there's a mutual match, start chatting through our secure messaging system. Get to know 
+                      When there&apos;s a mutual match, start chatting through our secure messaging system. Get to know 
                       each other, arrange property viewings, and discuss potential living arrangements.
                     </p>
                   </div>
@@ -86,7 +86,7 @@ export default function HowItWorks() {
                     <h3 className="mt-8 text-xl font-medium text-gray-900">4. Visit Properties</h3>
                     <p className="mt-2 text-base text-gray-600">
                       Schedule viewings of properties that interest you and your potential roommates. Our verified 
-                      listings ensure you're seeing quality rentals that fit your shared requirements.
+                      listings ensure you&apos;re seeing quality rentals that fit your shared requirements.
                     </p>
                   </div>
                 </div>
@@ -102,7 +102,7 @@ export default function HowItWorks() {
                     </div>
                     <h3 className="mt-8 text-xl font-medium text-gray-900">5. Finalize Arrangements</h3>
                     <p className="mt-2 text-base text-gray-600">
-                      When you've found the perfect match and property, use our in-app tools to help finalize living 
+                      When you&apos;ve found the perfect match and property, use our in-app tools to help finalize living 
                       arrangements. Set up roommate agreements, split expenses, and coordinate move-in logistics.
                     </p>
                   </div>
@@ -166,7 +166,7 @@ export default function HowItWorks() {
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-medium text-gray-900">What if things don't work out with my roommate?</h3>
+                  <h3 className="text-lg font-medium text-gray-900">What if things don&apos;t work out with my roommate?</h3>
                   <p className="mt-2 text-base text-gray-600">
                     We provide resources for conflict resolution and communication. Our premium users also have access to our 
                     roommate mediation service if needed.

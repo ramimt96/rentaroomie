@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
+import Image from 'next/image'
 
 type Roommate = {
   id: number
@@ -33,7 +34,7 @@ const roommates: Roommate[] = [
     age: 26,
     occupation: 'Marketing Manager',
     location: 'Manhattan, NY',
-    bio: 'Creative professional looking for a roommate who appreciates art and good conversations. I\'m tidy and sociable but also respect privacy.',
+    bio: 'Creative professional looking for a roommate who appreciates art and good conversations. I&apos;m tidy and sociable but also respect privacy.',
     interests: ['Art', 'Reading', 'Yoga', 'Travel'],
     imageSrc: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
   },
@@ -94,10 +95,12 @@ export default function FindRoommates() {
             {currentIndex < roommates.length ? (
               <div className="relative w-full max-w-md">
                 <div className={`bg-white rounded-xl shadow-xl overflow-hidden ${getCardClass()}`}>
-                  <img 
+                  <Image 
                     src={currentRoommate.imageSrc} 
                     alt={currentRoommate.name} 
                     className="w-full h-96 object-cover"
+                    width={800}
+                    height={600}
                   />
                   <div className="p-6">
                     <div className="flex justify-between items-center">
@@ -145,10 +148,10 @@ export default function FindRoommates() {
                 <svg className="mx-auto h-16 w-16 text-purple-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                 </svg>
-                <h2 className="mt-4 text-2xl font-bold text-gray-900">You've viewed all potential roommates!</h2>
+                <h2 className="mt-4 text-2xl font-bold text-gray-900">You&apos;ve viewed all potential roommates!</h2>
                 <p className="mt-2 text-gray-600">
                   {liked.length > 0 
-                    ? `You liked ${liked.length} roommate${liked.length > 1 ? 's' : ''}. We'll notify you when there's a match!` 
+                    ? `You liked ${liked.length} roommate${liked.length > 1 ? 's' : ''}. We&apos;ll notify you when there&apos;s a match!` 
                     : 'Try adjusting your preferences to see more potential roommates.'}
                 </p>
                 <div className="mt-6">

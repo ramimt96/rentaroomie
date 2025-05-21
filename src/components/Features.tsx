@@ -24,7 +24,7 @@ export default function Features() {
                 <p className="ml-16 text-lg leading-6 font-medium text-gray-900">Personality-Based Matching</p>
               </dt>
               <dd className="mt-2 ml-16 text-base text-gray-500">
-                Find roommates with compatible lifestyles, habits, and preferences. Our algorithm matches you with people you'll enjoy living with.
+                Find roommates with compatible lifestyles, habits, and preferences. Our algorithm matches you with people you&apos;ll enjoy living with.
               </dd>
             </div>
 
@@ -52,7 +52,7 @@ export default function Features() {
                 <p className="ml-16 text-lg leading-6 font-medium text-gray-900">Swipe & Match Interface</p>
               </dt>
               <dd className="mt-2 ml-16 text-base text-gray-500">
-                Swipe through potential roommates and properties like you would on a dating app. It's quick, fun, and intuitive.
+                Swipe through potential roommates and properties like you would on a dating app. It&apos;s quick, fun, and intuitive.
               </dd>
             </div>
 
