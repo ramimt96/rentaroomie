@@ -6,6 +6,11 @@ interface MongooseCache {
   promise: Promise<mongoose.Connection> | null;
 }
 
+// Type for global with mongoose property
+interface GlobalWithMongoose {
+  mongoose?: MongooseCache;
+}
+
 // Only use environment variables, never hardcode credentials
 const MONGODB_URI = process.env.MONGODB_URI as string;
 
@@ -18,12 +23,13 @@ if (!MONGODB_URI) {
  * in development. This prevents connections growing exponentially
  * during API Route usage.
  */
-// Using let instead of var for ESLint rules
-let cached: MongooseCache = (global as any).mongoose || { conn: null, promise: null };
+// Using const instead of let since it's never reassigned
+const cached: MongooseCache = ((global as unknown as GlobalWithMongoose).mongoose) || 
+  { conn: null, promise: null };
 
 // Initialize the global cache if it doesn't exist
-if (!(global as any).mongoose) {
-  (global as any).mongoose = cached;
+if (!(global as unknown as GlobalWithMongoose).mongoose) {
+  (global as unknown as GlobalWithMongoose).mongoose = cached;
 }
 
 async function dbConnect() {
