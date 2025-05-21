@@ -1,9 +1,17 @@
-import mongoose from 'mongoose';
+import mongoose, { Connection } from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://admin:RentARoomie123@rentaroomie.rk9kckk.mongodb.net/?retryWrites=true&w=majority&appName=RentARoomie';
+// Add mongoose global type
+declare global {
+  var mongoose: {
+    conn: mongoose.Connection | null;
+    promise: Promise<mongoose.Connection> | null;
+  };
+}
+
+const MONGODB_URI = process.env.MONGODB_URI as string;
 
 if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable');
+  throw new Error('Please define the MONGODB_URI environment variable in .env.local');
 }
 
 /**
@@ -28,7 +36,7 @@ async function dbConnect() {
     };
 
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      return mongoose;
+      return mongoose.connection;
     });
   }
   cached.conn = await cached.promise;
