@@ -1,15 +1,12 @@
 import mongoose from 'mongoose';
 
-// Declare mongoose on the global type
-interface GlobalWithMongoose extends NodeJS.Global {
-  mongoose: {
+// Global type augmentation
+declare global {
+  var mongoose: {
     conn: mongoose.Connection | null;
     promise: Promise<mongoose.Connection> | null;
   } | undefined;
 }
-
-// Declare global mongoose
-declare const global: GlobalWithMongoose;
 
 // Only use environment variables, never hardcode credentials
 const MONGODB_URI = process.env.MONGODB_URI as string;
@@ -30,21 +27,28 @@ if (!cached) {
 }
 
 async function dbConnect() {
-  if (cached.conn) {
+  if (cached?.conn) {
     return cached.conn;
   }
 
-  if (!cached.promise) {
+  if (!cached?.promise) {
     const opts = {
       bufferCommands: false,
     };
 
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      return mongoose.connection;
-    });
+    if (cached) {
+      cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+        return mongoose.connection;
+      });
+    }
   }
-  cached.conn = await cached.promise;
-  return cached.conn;
+  
+  if (cached) {
+    cached.conn = await cached.promise;
+    return cached.conn;
+  }
+  
+  throw new Error('Failed to initialize MongoDB connection cache');
 }
 
 export default dbConnect; 
