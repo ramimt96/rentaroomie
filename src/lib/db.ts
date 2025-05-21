@@ -1,11 +1,9 @@
 import mongoose from 'mongoose';
 
-// Global type augmentation
-declare global {
-  var mongoose: {
-    conn: mongoose.Connection | null;
-    promise: Promise<mongoose.Connection> | null;
-  } | undefined;
+// Define a type for our cached mongoose connection
+interface MongooseCache {
+  conn: mongoose.Connection | null;
+  promise: Promise<mongoose.Connection> | null;
 }
 
 // Only use environment variables, never hardcode credentials
@@ -20,35 +18,31 @@ if (!MONGODB_URI) {
  * in development. This prevents connections growing exponentially
  * during API Route usage.
  */
-let cached = global.mongoose;
+// Using let instead of var for ESLint rules
+let cached: MongooseCache = (global as any).mongoose || { conn: null, promise: null };
 
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
+// Initialize the global cache if it doesn't exist
+if (!(global as any).mongoose) {
+  (global as any).mongoose = cached;
 }
 
 async function dbConnect() {
-  if (cached?.conn) {
+  if (cached.conn) {
     return cached.conn;
   }
 
-  if (!cached?.promise) {
+  if (!cached.promise) {
     const opts = {
       bufferCommands: false,
     };
 
-    if (cached) {
-      cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-        return mongoose.connection;
-      });
-    }
+    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+      return mongoose.connection;
+    });
   }
   
-  if (cached) {
-    cached.conn = await cached.promise;
-    return cached.conn;
-  }
-  
-  throw new Error('Failed to initialize MongoDB connection cache');
+  cached.conn = await cached.promise;
+  return cached.conn;
 }
 
 export default dbConnect; 
