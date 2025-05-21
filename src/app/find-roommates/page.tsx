@@ -87,7 +87,7 @@ export default function FindRoommates() {
               Find Your Perfect Roommate
             </h1>
             <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500">
-              Swipe right on potential roommates you'd like to connect with
+              Swipe right on potential roommates you&apos;d like to connect with
             </p>
           </div>
           
