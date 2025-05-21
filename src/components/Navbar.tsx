@@ -2,9 +2,21 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import { useSession, signOut } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false)
+  const { data: session, status } = useSession()
+  const router = useRouter()
+
+  const handleSignOut = async () => {
+    await signOut({ redirect: false })
+    router.push('/')
+  }
+
+  const isAuthenticated = status === 'authenticated'
 
   return (
     <nav className="bg-white shadow-md">
@@ -32,12 +44,54 @@ export default function Navbar() {
           </div>
           
           <div className="hidden md:flex items-center">
-            <Link href="/login" className="px-4 py-2 text-sm font-medium text-purple-600 hover:text-purple-800">
-              Log in
-            </Link>
-            <Link href="/signup" className="ml-4 px-4 py-2 rounded-md text-sm font-medium text-white bg-purple-600 hover:bg-purple-700">
-              Sign up
-            </Link>
+            {!isAuthenticated ? (
+              <>
+                <Link href="/login" className="px-4 py-2 text-sm font-medium text-purple-600 hover:text-purple-800">
+                  Log in
+                </Link>
+                <Link href="/signup" className="ml-4 px-4 py-2 rounded-md text-sm font-medium text-white bg-purple-600 hover:bg-purple-700">
+                  Sign up
+                </Link>
+              </>
+            ) : (
+              <div className="relative ml-3">
+                <div>
+                  <button
+                    onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
+                    className="flex items-center max-w-xs text-sm rounded-full text-purple-600 hover:text-purple-800 focus:outline-none"
+                    id="user-menu"
+                    aria-haspopup="true"
+                  >
+                    <span className="mr-2">{session?.user?.name}</span>
+                    <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+                
+                {isProfileMenuOpen && (
+                  <div
+                    className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
+                    role="menu"
+                    aria-orientation="vertical"
+                    aria-labelledby="user-menu"
+                  >
+                    <Link href="/dashboard" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      Dashboard
+                    </Link>
+                    <Link href="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      Profile
+                    </Link>
+                    <button
+                      onClick={handleSignOut}
+                      className="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Sign out
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
           
           <div className="flex items-center md:hidden">
@@ -77,19 +131,44 @@ export default function Navbar() {
               About
             </Link>
           </div>
+          
           <div className="pt-4 pb-3 border-t border-gray-200">
-            <div className="flex items-center px-5">
-              <div className="flex-shrink-0">
-                <Link href="/login" className="block px-4 py-2 text-base font-medium text-purple-600 hover:text-purple-800">
-                  Log in
-                </Link>
+            {!isAuthenticated ? (
+              <div className="flex items-center px-5">
+                <div className="flex-shrink-0">
+                  <Link href="/login" className="block px-4 py-2 text-base font-medium text-purple-600 hover:text-purple-800">
+                    Log in
+                  </Link>
+                </div>
+                <div className="ml-3">
+                  <Link href="/signup" className="block px-4 py-2 rounded-md text-base font-medium text-white bg-purple-600 hover:bg-purple-700">
+                    Sign up
+                  </Link>
+                </div>
               </div>
-              <div className="ml-3">
-                <Link href="/signup" className="block px-4 py-2 rounded-md text-base font-medium text-white bg-purple-600 hover:bg-purple-700">
-                  Sign up
-                </Link>
+            ) : (
+              <div className="px-5">
+                <div className="flex items-center">
+                  <div className="flex-shrink-0 text-purple-600">
+                    <span className="text-base font-medium">{session?.user?.name}</span>
+                  </div>
+                </div>
+                <div className="mt-3 space-y-1">
+                  <Link href="/dashboard" className="block px-4 py-2 text-base font-medium text-gray-700 hover:text-purple-600 hover:bg-purple-50">
+                    Dashboard
+                  </Link>
+                  <Link href="/profile" className="block px-4 py-2 text-base font-medium text-gray-700 hover:text-purple-600 hover:bg-purple-50">
+                    Profile
+                  </Link>
+                  <button
+                    onClick={handleSignOut}
+                    className="w-full text-left block px-4 py-2 text-base font-medium text-gray-700 hover:text-purple-600 hover:bg-purple-50"
+                  >
+                    Sign out
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       )}

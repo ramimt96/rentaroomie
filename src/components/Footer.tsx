@@ -13,27 +13,12 @@ export default function Footer() {
                   Our Story
                 </Link>
               </li>
-              <li>
-                <Link href="/careers" className="text-base text-gray-600 hover:text-purple-600">
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link href="/press" className="text-base text-gray-600 hover:text-purple-600">
-                  Press
-                </Link>
-              </li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-sm font-semibold text-gray-500 tracking-wider uppercase">Resources</h3>
             <ul className="mt-4 space-y-4">
-              <li>
-                <Link href="/blog" className="text-base text-gray-600 hover:text-purple-600">
-                  Blog
-                </Link>
-              </li>
               <li>
                 <Link href="/guides" className="text-base text-gray-600 hover:text-purple-600">
                   Roommate Guides
@@ -46,27 +31,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          
-          <div>
-            <h3 className="text-sm font-semibold text-gray-500 tracking-wider uppercase">Legal</h3>
-            <ul className="mt-4 space-y-4">
-              <li>
-                <Link href="/privacy" className="text-base text-gray-600 hover:text-purple-600">
-                  Privacy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="text-base text-gray-600 hover:text-purple-600">
-                  Terms
-                </Link>
-              </li>
-              <li>
-                <Link href="/cookie-policy" className="text-base text-gray-600 hover:text-purple-600">
-                  Cookie Policy
-                </Link>
-              </li>
-            </ul>
-          </div>
+        
           
           <div>
             <h3 className="text-sm font-semibold text-gray-500 tracking-wider uppercase">Connect</h3>
@@ -75,11 +40,6 @@ export default function Footer() {
                 <Link href="/contact" className="text-base text-gray-600 hover:text-purple-600">
                   Contact Us
                 </Link>
-              </li>
-              <li>
-                <a href="https://twitter.com/rentRoomie" className="text-base text-gray-600 hover:text-purple-600">
-                  Twitter
-                </a>
               </li>
               <li>
                 <a href="https://instagram.com/rentRoomie" className="text-base text-gray-600 hover:text-purple-600">
